@@ -18,7 +18,7 @@ public class Pengu extends Actor
     public void act() 
     {
         checkKeys();
-        fall();
+        checkFHall();
     }
 
     private void checkKeys()
@@ -32,7 +32,24 @@ public class Pengu extends Actor
             moveRight();
         }
     }
-     public void fall()
+    puvlic void CheckFall()
+    { if(onGround()){
+       vSpeed = 0;
+    }
+    else {
+        fall();
+    }
+    
+    
+    
+    }
+    public boolean OnGround()
+    {
+      Actor under = getOneObjectAtOffset (0,getImage(). getHeight()/2,Ground.class);
+      return under  != null; 
+    } 
+    
+    public void fall()
     {
      setLocation(getX(), getY() + vSpeed);
      vSpeed = vSpeed + acceleration;
